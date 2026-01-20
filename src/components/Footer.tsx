@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Twitter, Linkedin, Github, Mail } from "lucide-react";
 import styles from "./Footer.module.css";
 
@@ -9,8 +10,8 @@ export default function Footer() {
                 <div className={styles.grid}>
                     <div className={styles.brand}>
                         <Link href="/" className={styles.logo}>
-                            <span className={styles.logoIcon}>LS</span>
-                            LabSamaria
+                            <Image src="/logo.png" alt="LabSamaria Logo" width={32} height={32} />
+                            <span>LabSamaria</span>
                         </Link>
                         <p className={styles.description}>
                             Exploring the frontiers of Artificial Intelligence.

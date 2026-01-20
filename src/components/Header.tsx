@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Search, Sun, Moon } from "lucide-react";
 import styles from "./Header.module.css";
 
@@ -32,8 +33,8 @@ export default function Header() {
         <header className={styles.header}>
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
-                    <span className={styles.logoIcon}>LS</span>
-                    LabSamaria
+                    <Image src="/logo.png" alt="LabSamaria Logo" width={40} height={40} className={styles.logoImage} />
+                    <span className={styles.logoText}>LabSamaria</span>
                 </Link>
 
                 {/* Desktop Nav */}
