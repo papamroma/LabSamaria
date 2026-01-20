@@ -1,0 +1,141 @@
+.hero {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(0, 91, 187, 0.05) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.heroText h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.heroText p {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.heroImage {
+  width: 100%;
+  height: 300px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 4px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+}
+
+.viewAll {
+  color: var(--color-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.trending {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  height: fit-content;
+}
+
+.trendingList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.trendingItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.trendingNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+}
+
+.trendingContent h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.trendingContent h4 a:hover {
+  color: var(--color-primary);
+}
+
+.trendingMeta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .heroContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .heroImage {
+    height: 400px;
+  }
+
+  .mainGrid {
+    grid-template-columns: 2fr 1fr;
+  }
+}

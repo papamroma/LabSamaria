@@ -1,0 +1,128 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.category {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.featuredImage {
+    width: 100%;
+    height: 400px;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--foreground);
+}
+
+.content h2 {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.content p {
+    margin-bottom: 1.5rem;
+}
+
+.content ul,
+.content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+}
+
+.content pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 2rem 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+}
+
+.content code {
+    background: var(--card-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: monospace;
+    color: var(--color-primary);
+}
+
+.content pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+.tags {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: var(--card-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: var(--color-primary);
+    color: white;
+}
