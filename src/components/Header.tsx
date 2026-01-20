@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Search, Sun, Moon, Twitter, Linkedin, Github } from "lucide-react";
 import styles from "./Header.module.css";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [theme, setTheme] = useState("light");
+    const pathname = usePathname();
 
     useEffect(() => {
         // Check system preference or local storage
@@ -39,13 +41,13 @@ export default function Header() {
 
                 {/* Desktop Nav */}
                 <nav className={styles.nav}>
-                    <Link href="/category/news" className={styles.navLink}>News</Link>
-                    <Link href="/category/reviews" className={styles.navLink}>Reviews</Link>
-                    <Link href="/category/business" className={styles.navLink}>Business</Link>
-                    <Link href="/category/amazing-reads" className={styles.navLink}>Amazing Reads</Link>
-                    <Link href="/category/startups" className={styles.navLink}>Startups</Link>
-                    <Link href="/category/tutorials" className={styles.navLink}>How To</Link>
-                    <Link href="/category/your-take" className={styles.navLink}>Your Take</Link>
+                    <Link href="/category/news" className={styles.navLink} aria-current={pathname === '/category/news' ? 'page' : undefined}>News</Link>
+                    <Link href="/category/reviews" className={styles.navLink} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>Reviews</Link>
+                    <Link href="/category/business" className={styles.navLink} aria-current={pathname === '/category/business' ? 'page' : undefined}>Business</Link>
+                    <Link href="/category/amazing-reads" className={styles.navLink} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>Amazing Reads</Link>
+                    <Link href="/category/startups" className={styles.navLink} aria-current={pathname === '/category/startups' ? 'page' : undefined}>Startups</Link>
+                    <Link href="/category/tutorials" className={styles.navLink} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>How To</Link>
+                    <Link href="/category/your-take" className={styles.navLink} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>Your Take</Link>
                 </nav>
 
                 <div className={styles.actions}>
@@ -84,13 +86,13 @@ export default function Header() {
             {/* Mobile Nav */}
             {isMenuOpen && (
                 <div className={styles.mobileNav}>
-                    <Link href="/category/news" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>News</Link>
-                    <Link href="/category/reviews" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Reviews</Link>
-                    <Link href="/category/business" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Business</Link>
-                    <Link href="/category/amazing-reads" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Amazing Reads</Link>
-                    <Link href="/category/startups" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Startups</Link>
-                    <Link href="/category/tutorials" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>How To</Link>
-                    <Link href="/category/your-take" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Your Take</Link>
+                    <Link href="/category/news" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/news' ? 'page' : undefined}>News</Link>
+                    <Link href="/category/reviews" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>Reviews</Link>
+                    <Link href="/category/business" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/business' ? 'page' : undefined}>Business</Link>
+                    <Link href="/category/amazing-reads" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>Amazing Reads</Link>
+                    <Link href="/category/startups" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/startups' ? 'page' : undefined}>Startups</Link>
+                    <Link href="/category/tutorials" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>How To</Link>
+                    <Link href="/category/your-take" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>Your Take</Link>
                 </div>
             )}
         </header>
