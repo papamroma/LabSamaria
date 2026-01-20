@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Search, Sun, Moon } from "lucide-react";
+import { Menu, X, Search, Sun, Moon, Twitter, Linkedin, Github } from "lucide-react";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -40,12 +40,28 @@ export default function Header() {
                 {/* Desktop Nav */}
                 <nav className={styles.nav}>
                     <Link href="/category/news" className={styles.navLink}>News</Link>
-                    <Link href="/category/tutorials" className={styles.navLink}>Tutorials</Link>
                     <Link href="/category/reviews" className={styles.navLink}>Reviews</Link>
-                    <Link href="/category/opinions" className={styles.navLink}>Opinions</Link>
+                    <Link href="/category/business" className={styles.navLink}>Business</Link>
+                    <Link href="/category/amazing-reads" className={styles.navLink}>Amazing Reads</Link>
+                    <Link href="/category/startups" className={styles.navLink}>Startups</Link>
+                    <Link href="/category/tutorials" className={styles.navLink}>How To</Link>
+                    <Link href="/category/your-take" className={styles.navLink}>Your Take</Link>
                 </nav>
 
                 <div className={styles.actions}>
+                    {/* Social Media Icons */}
+                    <div className={styles.socialIcons}>
+                        <a href="https://twitter.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <Twitter size={18} />
+                        </a>
+                        <a href="https://linkedin.com/company/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <Linkedin size={18} />
+                        </a>
+                        <a href="https://github.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <Github size={18} />
+                        </a>
+                    </div>
+
                     <button className={styles.iconBtn} aria-label="Search">
                         <Search size={20} />
                     </button>
@@ -69,9 +85,12 @@ export default function Header() {
             {isMenuOpen && (
                 <div className={styles.mobileNav}>
                     <Link href="/category/news" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>News</Link>
-                    <Link href="/category/tutorials" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Tutorials</Link>
                     <Link href="/category/reviews" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Reviews</Link>
-                    <Link href="/category/opinions" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Opinions</Link>
+                    <Link href="/category/business" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Business</Link>
+                    <Link href="/category/amazing-reads" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Amazing Reads</Link>
+                    <Link href="/category/startups" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Startups</Link>
+                    <Link href="/category/tutorials" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>How To</Link>
+                    <Link href="/category/your-take" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Your Take</Link>
                 </div>
             )}
         </header>

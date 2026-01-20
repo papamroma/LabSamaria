@@ -139,3 +139,51 @@
     grid-template-columns: 2fr 1fr;
   }
 }
+
+/* Mobile Swipeable Improvements */
+@media (max-width: 767px) {
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .heroText h1 {
+    font-size: 2rem;
+  }
+
+  .heroText p {
+    font-size: 1rem;
+  }
+
+  .heroImage {
+    height: 200px;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  /* Horizontal scroll for article cards on mobile */
+  .latest>div {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem !important;
+    padding-bottom: 1rem;
+  }
+
+  .latest>div>* {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .latest>div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .latest>div {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

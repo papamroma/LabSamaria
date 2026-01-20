@@ -55,6 +55,27 @@
     color: var(--color-primary);
 }
 
+.socialIcons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-right: 0.5rem;
+    border-right: 1px solid var(--border);
+}
+
+.socialIcons a {
+    color: var(--muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialIcons a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
 .actions {
     display: flex;
     align-items: center;
@@ -115,10 +136,25 @@
 @media (min-width: 768px) {
     .nav {
         display: flex;
-        gap: 2rem;
+        gap: 1.25rem;
+        font-size: 0.95rem;
     }
 
     .mobileMenuBtn {
         display: none;
+    }
+
+    .socialIcons {
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
+    .socialIcons {
+        display: none;
+    }
+
+    .logoText {
+        font-size: 1.2rem;
     }
 }
