@@ -10,27 +10,6 @@ const LATEST_POSTS = ARTICLES.slice(1);
 export default function Home() {
   return (
     <div className="page">
-      {/* Top Banner Ad */}
-      <div className="container" style={{ paddingTop: '2rem' }}>
-        <div style={{
-          width: '100%',
-          height: '90px',
-          background: 'var(--card-bg)',
-          border: '1px dashed var(--border)',
-          borderRadius: 'var(--radius)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'var(--muted)',
-          marginBottom: '2rem'
-        }}>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem' }}>Advertisement</p>
-            <p style={{ fontSize: '0.85rem' }}>Top Banner Ad Space (728x90)</p>
-          </div>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={`container ${styles.heroContent}`}>

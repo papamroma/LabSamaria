@@ -1,16 +1,19 @@
 :root {
   /* Brand Colors */
-  --color-primary: #005BBB; /* Blue from logo */
-  --color-secondary: #76B900; /* Green from logo */
-  --color-accent: #00E5FF; /* Cyan for futuristic accents */
-  
+  --color-primary: #005BBB;
+  /* Blue from logo */
+  --color-secondary: #76B900;
+  /* Green from logo */
+  --color-accent: #00E5FF;
+  /* Cyan for futuristic accents */
+
   /* Neutral Colors - Light Mode */
   --background: #FFFFFF;
   --foreground: #1A1A1A;
   --card-bg: #F5F7FA;
   --border: #E2E8F0;
   --muted: #64748B;
-  
+
   /* Status Colors */
   --success: #10B981;
   --warning: #F59E0B;
@@ -18,20 +21,23 @@
 
   /* Spacing */
   --radius: 0.75rem;
-  --header-height: 4rem;
+  --header-height: 9rem;
   --max-width: 1200px;
 }
 
 [data-theme='dark'] {
   /* Neutral Colors - Dark Mode */
-  --background: #0B0F19; /* Deep Navy */
+  --background: #0B0F19;
+  /* Deep Navy */
   --foreground: #F8FAFC;
   --card-bg: #111827;
   --border: #1E293B;
   --muted: #94A3B8;
-  
-  --color-primary: #3B82F6; /* Brighter blue for dark mode */
-  --color-secondary: #84CC16; /* Brighter green for dark mode */
+
+  --color-primary: #3B82F6;
+  /* Brighter blue for dark mode */
+  --color-secondary: #84CC16;
+  /* Brighter green for dark mode */
 }
 
 * {
@@ -56,16 +62,29 @@ a {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
 
 p {
   line-height: 1.6;
@@ -136,8 +155,15 @@ p {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {

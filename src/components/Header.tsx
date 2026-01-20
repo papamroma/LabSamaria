@@ -13,7 +13,6 @@ export default function Header() {
     const pathname = usePathname();
 
     useEffect(() => {
-        // Check system preference or local storage
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme) {
             setTheme(savedTheme);
@@ -32,54 +31,89 @@ export default function Header() {
     };
 
     return (
-        <header className={styles.header}>
-            <div className={`container ${styles.container}`}>
-                <Link href="/" className={styles.logo}>
-                    <Image src="/logo.png" alt="LabSamaria Logo" width={40} height={40} className={styles.logoImage} />
-                    <span className={styles.logoText}>LabSamaria</span>
-                </Link>
+        <header className={styles.headerWrapper}>
+            {/* Top Bar: Logo + Ad Space */}
+            <div className={styles.topBar}>
+                <div className={`container ${styles.topBarContainer}`}>
+                    <Link href="/" className={styles.logo}>
+                        <Image src="/logo.png" alt="LabSamaria Logo" width={50} height={50} className={styles.logoImage} />
+                        <span className={styles.logoText}>LabSamaria</span>
+                    </Link>
 
-                {/* Desktop Nav */}
-                <nav className={styles.nav}>
-                    <Link href="/category/news" className={styles.navLink} aria-current={pathname === '/category/news' ? 'page' : undefined}>News</Link>
-                    <Link href="/category/reviews" className={styles.navLink} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>Reviews</Link>
-                    <Link href="/category/business" className={styles.navLink} aria-current={pathname === '/category/business' ? 'page' : undefined}>Business</Link>
-                    <Link href="/category/amazing-reads" className={styles.navLink} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>Amazing Reads</Link>
-                    <Link href="/category/startups" className={styles.navLink} aria-current={pathname === '/category/startups' ? 'page' : undefined}>Startups</Link>
-                    <Link href="/category/tutorials" className={styles.navLink} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>How To</Link>
-                    <Link href="/category/your-take" className={styles.navLink} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>Your Take</Link>
-                </nav>
-
-                <div className={styles.actions}>
-                    {/* Social Media Icons */}
-                    <div className={styles.socialIcons}>
-                        <a href="https://twitter.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <Twitter size={18} />
-                        </a>
-                        <a href="https://linkedin.com/company/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <Linkedin size={18} />
-                        </a>
-                        <a href="https://github.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <Github size={18} />
-                        </a>
+                    {/* Top Ad Space */}
+                    <div className={styles.topAd}>
+                        <div style={{
+                            width: '100%',
+                            maxWidth: '728px',
+                            height: '90px',
+                            background: 'var(--card-bg)',
+                            border: '1px dashed var(--border)',
+                            borderRadius: '4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'var(--muted)',
+                            fontSize: '0.85rem'
+                        }}>
+                            Advertisement (728x90)
+                        </div>
                     </div>
 
-                    <button className={styles.iconBtn} aria-label="Search">
-                        <Search size={20} />
-                    </button>
-                    <button
-                        className={styles.iconBtn}
-                        onClick={toggleTheme}
-                        aria-label="Toggle Theme"
-                    >
-                        {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-                    </button>
-                    <button
-                        className={styles.mobileMenuBtn}
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
+                    {/* Social Icons + Theme Toggle */}
+                    <div className={styles.topActions}>
+                        <div className={styles.socialIcons}>
+                            <a href="https://twitter.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                <Twitter size={18} />
+                            </a>
+                            <a href="https://linkedin.com/company/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <Linkedin size={18} />
+                            </a>
+                            <a href="https://github.com/labsamaria" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <Github size={18} />
+                            </a>
+                        </div>
+                        <button className={styles.iconBtn} onClick={toggleTheme} aria-label="Toggle Theme">
+                            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Navigation Bar */}
+            <div className={styles.navBar}>
+                <div className={`container ${styles.navContainer}`}>
+                    <nav className={styles.nav}>
+                        <Link href="/category/news" className={styles.navLink} aria-current={pathname === '/category/news' ? 'page' : undefined}>
+                            News
+                        </Link>
+                        <Link href="/category/reviews" className={styles.navLink} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>
+                            Reviews
+                        </Link>
+                        <Link href="/category/business" className={styles.navLink} aria-current={pathname === '/category/business' ? 'page' : undefined}>
+                            Business
+                        </Link>
+                        <Link href="/category/amazing-reads" className={styles.navLink} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>
+                            Amazing Reads
+                        </Link>
+                        <Link href="/category/startups" className={styles.navLink} aria-current={pathname === '/category/startups' ? 'page' : undefined}>
+                            Startups
+                        </Link>
+                        <Link href="/category/tutorials" className={styles.navLink} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>
+                            How To
+                        </Link>
+                        <Link href="/category/your-take" className={styles.navLink} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>
+                            Your Take
+                        </Link>
+                    </nav>
+
+                    <div className={styles.navActions}>
+                        <button className={styles.searchBtn} aria-label="Search">
+                            <Search size={20} />
+                        </button>
+                        <button className={styles.mobileMenuBtn} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
                 </div>
             </div>
 
