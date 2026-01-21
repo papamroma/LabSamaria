@@ -223,23 +223,52 @@
     }
 }
 
-/* Mobile Adjustments */
-@media (max-width: 767px) {
-    .topBarContainer {
-        grid-template-columns: auto 1fr;
-        gap: 1rem;
-    }
+.dateDisplay {
+    font-family: var(--font-space-grotesk);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    white-space: nowrap;
+    display: none;
+}
 
-    .logoText {
-        font-size: 1.3rem;
-    }
+.searchForm {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-    .topActions {
-        gap: 0.5rem;
-    }
+.searchInput {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    width: 150px;
+    outline: none;
+}
 
-    .socialIcons {
-        gap: 0.5rem;
-        padding-right: 0.5rem;
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.closeSearchBtn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.closeSearchBtn:hover {
+    color: white;
+}
+
+@media (min-width: 1024px) {
+    .dateDisplay {
+        display: block;
     }
 }

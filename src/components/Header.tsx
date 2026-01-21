@@ -3,16 +3,24 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Menu, X, Search, Sun, Moon, Twitter, Linkedin, Github } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+    Menu, X, Search, Sun, Moon, Twitter, Linkedin, Github,
+    Zap, Newspaper, Star, Briefcase, Rocket, BookOpen, MessageCircle
+} from "lucide-react";
 import styles from "./Header.module.css";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [theme, setTheme] = useState("light");
+    const [currentDate, setCurrentDate] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
 
     useEffect(() => {
+        // Theme initialization
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme) {
             setTheme(savedTheme);
@@ -21,6 +29,17 @@ export default function Header() {
             setTheme("dark");
             document.documentElement.setAttribute("data-theme", "dark");
         }
+
+        // Real-time Date
+        const updateDate = () => {
+            const now = new Date();
+            const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+            setCurrentDate(now.toLocaleDateString('en-US', options));
+        };
+        updateDate();
+        const interval = setInterval(updateDate, 60000); // Update every minute
+
+        return () => clearInterval(interval);
     }, []);
 
     const toggleTheme = () => {
@@ -30,9 +49,28 @@ export default function Header() {
         localStorage.setItem("theme", newTheme);
     };
 
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+            setIsSearchOpen(false);
+        }
+    };
+
+    const navItems = [
+        { name: "What's New", href: "/category/whats-new", icon: Zap, color: "#f59e0b" }, // Amber
+        { name: "News", href: "/category/news", icon: Newspaper, color: "#3b82f6" }, // Blue
+        { name: "Reviews", href: "/category/reviews", icon: Star, color: "#ef4444" }, // Red
+        { name: "Business", href: "/category/business", icon: Briefcase, color: "#10b981" }, // Emerald
+        { name: "Amazing Reads", href: "/category/amazing-reads", icon: BookOpen, color: "#8b5cf6" }, // Violet
+        { name: "Startups", href: "/category/startups", icon: Rocket, color: "#ec4899" }, // Pink
+        { name: "How To", href: "/category/tutorials", icon: BookOpen, color: "#06b6d4" }, // Cyan
+        { name: "Your Take", href: "/category/your-take", icon: MessageCircle, color: "#f97316" }, // Orange
+    ];
+
     return (
         <header className={styles.headerWrapper}>
-            {/* Top Bar: Logo + Ad Space */}
+            {/* Top Bar: Logo + Ad Space + Date */}
             <div className={styles.topBar}>
                 <div className={`container ${styles.topBarContainer}`}>
                     <Link href="/" className={styles.logo}>
@@ -40,12 +78,17 @@ export default function Header() {
                         <span className={styles.logoText}>LabSamaria</span>
                     </Link>
 
-                    {/* Top Ad Space */}
+                    {/* Date Display (Visible on Desktop) */}
+                    <div className={styles.dateDisplay}>
+                        {currentDate}
+                    </div>
+
+                    {/* Top Ad Space (Hidden on mobile, visible on desktop) */}
                     <div className={styles.topAd}>
                         <div style={{
                             width: '100%',
-                            maxWidth: '728px',
-                            height: '90px',
+                            maxWidth: '468px',
+                            height: '60px',
                             background: 'var(--card-bg)',
                             border: '1px dashed var(--border)',
                             borderRadius: '4px',
@@ -53,9 +96,9 @@ export default function Header() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             color: 'var(--muted)',
-                            fontSize: '0.85rem'
+                            fontSize: '0.75rem'
                         }}>
-                            Advertisement (728x90)
+                            Ad Space (468x60)
                         </div>
                     </div>
 
@@ -83,33 +126,43 @@ export default function Header() {
             <div className={styles.navBar}>
                 <div className={`container ${styles.navContainer}`}>
                     <nav className={styles.nav}>
-                        <Link href="/category/news" className={styles.navLink} aria-current={pathname === '/category/news' ? 'page' : undefined}>
-                            News
-                        </Link>
-                        <Link href="/category/reviews" className={styles.navLink} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>
-                            Reviews
-                        </Link>
-                        <Link href="/category/business" className={styles.navLink} aria-current={pathname === '/category/business' ? 'page' : undefined}>
-                            Business
-                        </Link>
-                        <Link href="/category/amazing-reads" className={styles.navLink} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>
-                            Amazing Reads
-                        </Link>
-                        <Link href="/category/startups" className={styles.navLink} aria-current={pathname === '/category/startups' ? 'page' : undefined}>
-                            Startups
-                        </Link>
-                        <Link href="/category/tutorials" className={styles.navLink} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>
-                            How To
-                        </Link>
-                        <Link href="/category/your-take" className={styles.navLink} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>
-                            Your Take
-                        </Link>
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={styles.navLink}
+                                    aria-current={pathname === item.href ? 'page' : undefined}
+                                >
+                                    <Icon size={16} color={item.color} style={{ marginRight: '0.5rem' }} />
+                                    {item.name}
+                                </Link>
+                            );
+                        })}
                     </nav>
 
                     <div className={styles.navActions}>
-                        <button className={styles.searchBtn} aria-label="Search">
-                            <Search size={20} />
-                        </button>
+                        {isSearchOpen ? (
+                            <form onSubmit={handleSearch} className={styles.searchForm}>
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className={styles.searchInput}
+                                    autoFocus
+                                />
+                                <button type="button" onClick={() => setIsSearchOpen(false)} className={styles.closeSearchBtn}>
+                                    <X size={18} />
+                                </button>
+                            </form>
+                        ) : (
+                            <button className={styles.searchBtn} onClick={() => setIsSearchOpen(true)} aria-label="Search">
+                                <Search size={20} />
+                            </button>
+                        )}
+
                         <button className={styles.mobileMenuBtn} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -120,13 +173,21 @@ export default function Header() {
             {/* Mobile Nav */}
             {isMenuOpen && (
                 <div className={styles.mobileNav}>
-                    <Link href="/category/news" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/news' ? 'page' : undefined}>News</Link>
-                    <Link href="/category/reviews" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/reviews' ? 'page' : undefined}>Reviews</Link>
-                    <Link href="/category/business" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/business' ? 'page' : undefined}>Business</Link>
-                    <Link href="/category/amazing-reads" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/amazing-reads' ? 'page' : undefined}>Amazing Reads</Link>
-                    <Link href="/category/startups" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/startups' ? 'page' : undefined}>Startups</Link>
-                    <Link href="/category/tutorials" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/tutorials' ? 'page' : undefined}>How To</Link>
-                    <Link href="/category/your-take" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)} aria-current={pathname === '/category/your-take' ? 'page' : undefined}>Your Take</Link>
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={styles.mobileNavLink}
+                                onClick={() => setIsMenuOpen(false)}
+                                aria-current={pathname === item.href ? 'page' : undefined}
+                            >
+                                <Icon size={18} color={item.color} style={{ marginRight: '0.75rem' }} />
+                                {item.name}
+                            </Link>
+                        );
+                    })}
                 </div>
             )}
         </header>
