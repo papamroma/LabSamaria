@@ -31,9 +31,12 @@ export default function NewArticle() {
             [{ 'header': [1, 2, 3, false] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            ['link', 'image', 'code-block'],
+            ['link', 'image', 'video', 'code-block'],
             ['clean']
         ],
+        clipboard: {
+            matchVisual: false,
+        },
     };
 
     return (
