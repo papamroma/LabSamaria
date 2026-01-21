@@ -14,10 +14,10 @@
 }
 
 .topBarContainer {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1.5rem;
 }
 
 .logo {
