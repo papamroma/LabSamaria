@@ -7,6 +7,7 @@ export const ARTICLES = [
         category: "Insights",
         date: "Oct 26, 2023",
         author: "Alex Rivera",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         content: `
       <p>Generative AI has taken the world by storm, but we are only scratching the surface. The next generation of models will go beyond simple text and image generation to understand physics, reason about complex problems, and interact with the real world.</p>
       <h2>Multimodal Reasoning</h2>
@@ -24,6 +25,7 @@ export const ARTICLES = [
         category: "Tutorials",
         date: "Oct 24, 2023",
         author: "Sarah Chen",
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
         content: `
       <p>The Transformer architecture is the backbone of modern NLP. Let's break down how it works, specifically the Self-Attention mechanism.</p>
       <h2>The Attention Mechanism</h2>
@@ -49,6 +51,7 @@ def scaled_dot_product_attention(query, key, value):
         category: "Reviews",
         date: "Oct 22, 2023",
         author: "Mike Ross",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
         content: "<p>Here are the top tools...</p>",
         tags: ["Tools", "Productivity"]
     },
@@ -60,6 +63,7 @@ def scaled_dot_product_attention(query, key, value):
         category: "Opinions",
         date: "Oct 20, 2023",
         author: "Dr. A. Smith",
+        image: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&q=80&w=800",
         content: "<p>Ethics in AI...</p>",
         tags: ["Ethics", "Safety"]
     },
@@ -71,6 +75,7 @@ def scaled_dot_product_attention(query, key, value):
         category: "Tutorials",
         date: "Oct 18, 2023",
         author: "Code Master",
+        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=800",
         content: "<p>Tutorial content...</p>",
         tags: ["PyTorch", "Tutorial", "Python"]
     }

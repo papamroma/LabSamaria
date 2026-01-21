@@ -135,7 +135,9 @@ export default function Header() {
                                     className={styles.navLink}
                                     aria-current={pathname === item.href ? 'page' : undefined}
                                 >
-                                    <Icon size={16} color={item.color} style={{ marginRight: '0.5rem' }} />
+                                    <div className={styles.iconCircle} style={{ backgroundColor: item.color }}>
+                                        <Icon size={14} color="white" />
+                                    </div>
                                     {item.name}
                                 </Link>
                             );
@@ -183,7 +185,9 @@ export default function Header() {
                                 onClick={() => setIsMenuOpen(false)}
                                 aria-current={pathname === item.href ? 'page' : undefined}
                             >
-                                <Icon size={18} color={item.color} style={{ marginRight: '0.75rem' }} />
+                                <div className={styles.iconCircle} style={{ backgroundColor: item.color, marginRight: '1rem' }}>
+                                    <Icon size={16} color="white" />
+                                </div>
                                 {item.name}
                             </Link>
                         );
