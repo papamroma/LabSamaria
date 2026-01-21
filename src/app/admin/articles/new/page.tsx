@@ -1,14 +1,16 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { useState } from "react";
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Save, Image as ImageIcon, ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import "react-quill/dist/quill.snow.css";
 
 // Dynamic import for React Quill to avoid SSR issues
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = nextDynamic(() => import("react-quill"), { ssr: false });
 
 export default function NewArticle() {
     const [title, setTitle] = useState("");

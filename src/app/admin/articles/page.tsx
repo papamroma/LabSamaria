@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import AdminLayout from "@/components/admin/AdminLayout";
 import Link from "next/link";
 import { Plus, Search, Edit, Trash2 } from "lucide-react";

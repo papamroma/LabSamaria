@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import AdminLayout from "@/components/admin/AdminLayout";
 import { FileText, Users, Eye, TrendingUp } from "lucide-react";
 

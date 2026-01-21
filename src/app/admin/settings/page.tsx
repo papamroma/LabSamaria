@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { useState } from "react";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Save, Upload, Globe, Palette, Share2, Search } from "lucide-react";
